@@ -120,7 +120,7 @@ public class TMovement : MonoBehaviour
     public void VerticalMove(Vector3 moveJump)
     {
         Vector3 currentVelocity = rb.velocity;
-        print(rb.velocity);
+        //print(rb.velocity);
 
         switch (moveJump.y >= 0, Physics.Raycast(rb.transform.position, Vector3.down, 1.5f))
         {
