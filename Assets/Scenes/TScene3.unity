@@ -591,7 +591,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252981022}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7811151, y: 0.21884623, z: -0.40907925, w: -0.41787526}
+  m_LocalRotation: {x: 0.71248543, y: 0.1962484, z: -0.21953477, w: 0.63691103}
   m_LocalPosition: {x: -35.87334, y: 81.70093, z: -83.08808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1827,6 +1827,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inaccuracy: 5
   sexyback: {fileID: 1563962747}
+  agent: {fileID: 1943037660}
+  rb: {fileID: 1943037662}
+  collider: {fileID: 1943037663}
 --- !u!82 &1563962747
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6814,6 +6817,7 @@ GameObject:
   - component: {fileID: 1838072955}
   - component: {fileID: 1838072954}
   - component: {fileID: 1838072953}
+  - component: {fileID: 1838072956}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -6896,6 +6900,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 645120100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838072956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838072952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 368052b5f9c3aa94598a330bd7c66596, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1943037659
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,6 +6941,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1943037661}
   - component: {fileID: 1943037660}
+  - component: {fileID: 1943037662}
+  - component: {fileID: 1943037663}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -6944,13 +6981,61 @@ Transform:
   m_GameObject: {fileID: 1943037659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.157219, y: -6.42, z: 1.6956097}
+  m_LocalPosition: {x: 103.638084, y: -6.42, z: 88.67657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1563962743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1943037662
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943037659}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1943037663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943037659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2098590184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6964,7 +7049,7 @@ GameObject:
   - component: {fileID: 2098590187}
   - component: {fileID: 2098590186}
   - component: {fileID: 2098590189}
-  - component: {fileID: 2098590194}
+  - component: {fileID: 2098590196}
   - component: {fileID: 2098590192}
   - component: {fileID: 2098590193}
   - component: {fileID: 2098590195}
@@ -6984,7 +7069,7 @@ Transform:
   m_GameObject: {fileID: 2098590184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.00020073575, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5191345, y: -3.8763504, z: 1.4190445}
+  m_LocalPosition: {x: 87, y: -3.8763504, z: 88.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7138,19 +7223,43 @@ MonoBehaviour:
       m_Calls: []
   m_DeviceRegainedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2098590196}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: 647a0e5c-f890-4b27-aea3-66cf48700e95
     m_ActionName: PlayerTPV/Attack1[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2098590194}
-        m_TargetAssemblyTypeName: TMovement, Assembly-CSharp
+      - m_Target: {fileID: 2098590196}
+        m_TargetAssemblyTypeName: rMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -7165,9 +7274,9 @@ MonoBehaviour:
     m_ActionName: PlayerTPV/Movement[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/a,/Keyboard/d,/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2098590194}
+      - m_Target: {fileID: 2098590196}
         m_TargetAssemblyTypeName: TMovement, Assembly-CSharp
-        m_MethodName: OnLook
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7180,39 +7289,58 @@ MonoBehaviour:
     m_ActionId: a3ed6f94-2ee5-41bc-983a-3d7f3c09b617
     m_ActionName: PlayerTPV/Looking[/Mouse/delta/left,/Mouse/delta/right,/Mouse/delta/down,/Mouse/delta/up]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 41b7b3e6-0ec2-497c-ae55-12f5ca49caa7
-    m_ActionName: PlayerTPV/RotatingCamOnStick
+      m_Calls:
+      - m_Target: {fileID: 2098590196}
+        m_TargetAssemblyTypeName: rMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: 7b133a6d-7f9a-4e42-b48c-156206c14a56
+    m_ActionName: PlayerTPV/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2098590196}
+        m_TargetAssemblyTypeName: TMovement, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: 84393eb5-6ed4-4e58-9fb4-36fc265a14d9
+    m_ActionName: PlayerTPV/Slide/Slam[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2098590196}
+        m_TargetAssemblyTypeName: rMovement, Assembly-CSharp
+        m_MethodName: OnDEBUG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5cd65da6-fc4f-41a1-aa73-e9ee17eecab6
+    m_ActionName: PlayerTPV/DEBUG[/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard and Mouse
   m_DefaultActionMap: PlayerTPV
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 330585545}
---- !u!114 &2098590194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098590184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3affb1e8b0dc2d444bde8e62638c3f40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2098590189}
-  input: {fileID: 2098590193}
-  cumPivo: {fileID: 551573099}
-  body: {fileID: 2098590185}
-  cum: {fileID: 330585545}
-  animator: {fileID: 2098590195}
-  sens: 2
-  multiplierSlam: 50
-  multiplierMove: 40
-  JM: 1
-  SM: 50
-  jiggle: 0
-  juggleForce: 2
 --- !u!95 &2098590195
 Animator:
   serializedVersion: 5
@@ -7234,6 +7362,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2098590196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098590184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788995ebea01b3943bb939858cbdc2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2098590189}
+  input: {fileID: 2098590193}
+  camPivot: {fileID: 551573099}
+  body: {fileID: 26432288}
+  cam: {fileID: 330585545}
+  animator: {fileID: 2098590195}
+  sens: 2
+  multiplierSlam: 3
+  multiplierMove: 50
+  JM: 50
+  SM: 50
+  jiggle: 0
+  juggleForce: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

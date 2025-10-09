@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,15 +24,14 @@ public class TMovement : MonoBehaviour
     public bool jiggle = false;
     [SerializeField] float juggleForce = 2f;
 
-    bool isThereDoubleJump;
     bool isGamepadLastDevice;
-    bool isSlamming = false;
-    bool isJumping = false;
     float jiggling = 0;
     Vector3 _move;
     Vector2 _moveMouse;
+    bool isMovementPressed = false;
+
     Vector3 thirdPerson = new Vector3(0.6f, 0.8f, -1.5f);
-    
+
     float camY;
     float camX;
 
@@ -43,6 +43,16 @@ public class TMovement : MonoBehaviour
     public void OnLook(InputAction.CallbackContext contextLook)
     {
         _moveMouse = contextLook.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext contextJump)
+    {
+        var _jump = contextJump.ReadValueAsButton();
+    }
+
+    public void OnSlideSlam(InputAction.CallbackContext contextSS)
+    {
+        var _ss = contextSS.ReadValueAsButton();
     }
 
     void Start()
@@ -74,12 +84,16 @@ public class TMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Vector3.down * 2, ForceMode.Acceleration);
-        Movement(_move);
-        VerticalMove(_move);
+        if (isMovementPressed)
+        {
+            Movement(_move);
+        }
+        //VerticalMove(_move);
     }
 
     void Movement(Vector3 direction)
     {
+        //print(direction);
         rb.AddRelativeForce((new Vector3(cumPivo.forward.x, 0f, cumPivo.forward.z) * direction.z + cumPivo.right * direction.x) * multiplierMove);
     }
 
@@ -117,7 +131,7 @@ public class TMovement : MonoBehaviour
         cumPivo.transform.rotation = Quaternion.Euler(camY, camX, jiggling);
     }
     
-    public void VerticalMove(Vector3 moveJump)
+    /*public void VerticalMove(Vector3 moveJump)
     {
         Vector3 currentVelocity = rb.velocity;
         //print(rb.velocity);
@@ -126,21 +140,15 @@ public class TMovement : MonoBehaviour
         {
             case (true, true):  //прыжок
                 rb.velocity = currentVelocity + new Vector3(0f, moveJump.y * 15 * JM, 0f);
-                isThereDoubleJump = true;
                 break;
 
-            case (true, false): //второй прыжок
-                //print(actionTimer = actionCooldown);
-                /*if (isThereDoubleJump)
-                {
-                    rb.velocity = currentVelocity + new Vector3(0f, moveJump.y * 15 * JM, 0f);
-                    isThereDoubleJump = false;
-                }*/
+            case (true, false):
+                rb.velocity = currentVelocity + new Vector3(0f, moveJump.y * 15 * JM, 0f);
                 break;
 
             case (false, true): //слайд
                 rb.velocity = new Vector3(cumPivo.forward.x, 0f, cumPivo.forward.z) * SM;
-                isThereDoubleJump = true;
+
                 break;
 
             case (false, false): //слэм
@@ -148,4 +156,5 @@ public class TMovement : MonoBehaviour
                 break;
         };
     }
+    */
 }
