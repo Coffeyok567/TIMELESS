@@ -22,6 +22,7 @@ public class MusicManager : MonoBehaviour
 
     private MusicBuff currentBuff;
 
+
     void Awake()
     {
         if (Instance == null)

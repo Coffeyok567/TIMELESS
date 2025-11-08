@@ -6,11 +6,13 @@ public class RabbController : CharacterBase
 
     public override void PerformMeleeAttack()
     {
+        // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log("Крол: атака тростью в ближнем бою");
     }
 
     public override void PerformRangedAttack()
     {
+        // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log("Крол: выстрелы томпсоном в дальнем бою");
         ShootTompson();
     }

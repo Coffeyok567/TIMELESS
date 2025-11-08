@@ -23,11 +23,13 @@ public class RodionController : CharacterBase
 
     public override void PerformMeleeAttack()
     {
+        // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log("Родион: атака лобзиком в ближнем бою");
     }
 
     public override void PerformRangedAttack()
     {
+        // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log("Родион: выстрел аннигилятором в дальнем бою");
         ShootAnnihilator();
     }

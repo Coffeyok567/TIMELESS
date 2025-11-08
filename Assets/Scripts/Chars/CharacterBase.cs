@@ -120,12 +120,10 @@ public abstract class CharacterBase : MonoBehaviour
         if (context.performed)
         {
             UseAbility(true);
-            //Debug.Log("зажат");
         }
         else if (context.canceled)
         {
             UseAbility(false);
-            //Debug.Log("не зажат");
         }
         Debug.Log(context.phase);
     }

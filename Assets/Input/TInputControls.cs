@@ -205,7 +205,7 @@ public partial class @TInputControls: IInputActionCollection2, IDisposable
                     ""id"": ""cb8ab794-a2cb-4833-a3a7-773f22dd64e5"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.5,pressPoint=1)"",
+                    ""interactions"": ""Tap(duration=1,pressPoint=1.401298E-45)"",
                     ""initialStateCheck"": false
                 },
                 {

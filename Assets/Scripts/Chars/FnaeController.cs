@@ -8,18 +8,21 @@ public class FnaeController : CharacterBase
 
     public override void PerformMeleeAttack()
     {
-        Debug.Log("‘най: атака перчаткой в ближнем бою");
+        // TODO: добавить мультипликаторы урона к итоговой реализации
+        Debug.Log($"‘най: атака перчаткой в ближнем бою {damageMultiplier}");
         CreateBurnEffect();
     }
 
     public override void PerformRangedAttack()
     {
-        Debug.Log("‘най: атака перчаткой в дальнем бою");
+        // TODO: добавить мультипликаторы урона к итоговой реализации
+        Debug.Log($"‘най: атака перчаткой в дальнем бою");
         ShootFireProjectile();
     }
 
     public override void UseAbility(bool isHold)
     {
+        // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log("‘най: молотов");
         IgniteArea();
     }
@@ -28,6 +31,11 @@ public class FnaeController : CharacterBase
     {
         Debug.Log("‘най: уворот");
     }
+
+
+
+
+
 
     private void CreateBurnEffect()
     {
