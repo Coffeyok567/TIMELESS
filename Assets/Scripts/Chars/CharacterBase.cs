@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public abstract class CharacterBase : MonoBehaviour
 {
     [Header("Информация о персонаже")]
-    public string name;
+    public string charname;
 
     [Header("Компоненты")]
     protected Rigidbody rb;

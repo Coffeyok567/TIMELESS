@@ -2115,6 +2115,7 @@ GameObject:
   - component: {fileID: 762196032}
   - component: {fileID: 762196031}
   - component: {fileID: 762196029}
+  - component: {fileID: 762196035}
   - component: {fileID: 762196034}
   - component: {fileID: 762196033}
   m_Layer: 0
@@ -2333,6 +2334,30 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &762196035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762196026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0ea60fb1a398444b353551457504f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  styleLevels:
+  - levelName: "\u0414\u0435\u0440\u044C\u043C\u043E"
+    pointsRequired: 1
+    damageMultiplier: 0
+    moveSpeedBonus: 0
+    styleColor: {r: 0.18100357, g: 1, b: 0, a: 0}
+    visualEffect: {fileID: 0}
+  currentStylePoints: 0
+  styleDecayRate: 1
+  styleDecayDelay: 3
+  styleParticles: {fileID: 0}
+  styleLight: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,22 +3508,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1110263730}
         m_TargetAssemblyTypeName: RodionController, Assembly-CSharp
-        m_MethodName: PerformRangedAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1460f8e6-96fc-4e71-a336-308e1d54a024
-    m_ActionName: Player/RangedAttack
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1110263730}
-        m_TargetAssemblyTypeName: RodionController, Assembly-CSharp
         m_MethodName: Dodge
         m_Mode: 1
         m_Arguments:
@@ -3731,6 +3740,11 @@ MonoBehaviour:
   damageMultiplier: 1
   speedMultiplier: 1
   attackSpeedMultiplier: 1
+  _styleManager: {fileID: 762196035}
+  stylePerHit: 25
+  stylePerKill: 50
+  stylePerDodge: 15
+  stylePerCombo: 100
 --- !u!1 &1441956387
 GameObject:
   m_ObjectHideFlags: 0
