@@ -38,6 +38,23 @@ public class FinaControler : CharacterBase
         projectile.transform.position = transform.position + transform.forward;
         projectile.GetComponent<Renderer>().material.color = Color.red;
         // TO DO: добавить Rigidbody и логику полета
+
+
+
+        /*
+        GameObject bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        bullet.transform.position = transform.position + transform.forward;
+        bullet.transform.localScale = Vector3.one * 0.2f;
+        bullet.GetComponent<Renderer>().material.color = Color.blue;
+
+        Rigidbody bulletRb = bullet.AddComponent<Rigidbody>();
+        bulletRb.useGravity = false;
+        bulletRb.velocity = transform.forward * 25f;
+
+        // Добавляем коллайдер и тег для идентификации
+        bullet.tag = "PlayerProjectile";
+        Destroy(bullet, 2f);
+        */
     }
 
     void StunInSphere()

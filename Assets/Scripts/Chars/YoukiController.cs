@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +24,8 @@ public class YoukiController : CharacterBase
     {
         // TODO: добавить мультипликаторы урона к итоговой реализации
         Debug.Log($"Еки: атака ножами в ближнем бою");
-        PlayKnifeAttack();
+        //PlayKnifeAttack();
+        ShootRevolver();
     }
 
     public override void PerformRangedAttack()
@@ -73,19 +75,39 @@ public class YoukiController : CharacterBase
 
     private void ShootRevolver()
     {
+        // Создаем луч из центра экрана игрока
+        Ray ray = this.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hitInfo;
 
-        GameObject bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        bullet.transform.position = transform.position + transform.forward;
-        bullet.transform.localScale = Vector3.one * 0.2f;
-        bullet.GetComponent<Renderer>().material.color = Color.blue;
+        // Проверяем попадание луча в объект
+        if (Physics.Raycast(ray, out hitInfo, weaponRange))
+        {
+            /*PlayerHealth hitPlayerHealth = hitInfo.collider.GetComponent<PlayerHealth>(); // Получаем компонент PlayerHealth на объекте, в который попал луч
+            if (hitPlayerHealth != null) // Если объект имеет компонент PlayerHealth, наносим ему урон
+            {
+                hitPlayerHealth.TakeDamage(dealingDamage);
+                Debug.Log($"Нанесено {dealingDamage} урона");
+            }*/
 
-        Rigidbody bulletRb = bullet.AddComponent<Rigidbody>();
-        bulletRb.useGravity = false;
-        bulletRb.velocity = transform.forward * 25f;
+            GameObject impactObj = Instantiate(impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)); // Воспроизводим эффект попадания
+            Destroy(impactObj, impactEffectDuration); // Уничтожаем эффект через определенное время
+            Debug.Log("Попадание");
 
-        // Добавляем коллайдер и тег для идентификации
-        bullet.tag = "PlayerProjectile";
-        Destroy(bullet, 2f);
+            // Отображаем след пули
+            LineRenderer tracer = Instantiate(tracerEffect, gunEnd.position, Quaternion.identity);
+            StartCoroutine(ShowTracerEffect(tracer, gunEnd.position, hitInfo.point));
+        }
+        else
+        {
+            Debug.Log("Промах");
+            Vector3 endPoint = ray.origin + ray.direction * Mathf.Min(weaponRange, weaponRange); // Определяем точку, где луч должен закончиться
+            GameObject impactObj = Instantiate(impactEffect, endPoint, Quaternion.identity); // Воспроизводим эффект попадания на этой точке
+            Destroy(impactObj, impactEffectDuration); // Уничтожаем эффект через определенное время
+
+            // Отображаем след пули
+            LineRenderer tracer = Instantiate(tracerEffect, gunEnd.position, Quaternion.identity);
+            StartCoroutine(ShowTracerEffect(tracer, gunEnd.position, endPoint));
+        }
     }
 
     // Публичные методы для управления музыкой
