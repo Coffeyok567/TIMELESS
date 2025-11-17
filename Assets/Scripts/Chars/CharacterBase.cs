@@ -392,7 +392,7 @@ public abstract class CharacterBase : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Дополнительная проверка земли через триггеры
+        // Дополнительная проверка земли через триггеры  
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
