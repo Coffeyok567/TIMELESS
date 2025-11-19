@@ -127,7 +127,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         int newIndex = currentWeaponIndex;
 
-        // Циклическая смена по массиву
+        // Циклическая смена по массиву  
         do
         {
             newIndex = (newIndex + (int)direction.y + weaponSlots.Length) % weaponSlots.Length;
